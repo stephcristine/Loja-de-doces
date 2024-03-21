@@ -1,14 +1,17 @@
-class Produto():
-  def __init__(self, preco, desc, nome):
+from Categoria import * 
+
+class Produto(Categoria):
+  def __init__(self, nome, preco, desc, nomeP):
+    super().__init__(nomeP)
     self.nome = nome
     self.preco =  preco
     self.descricao = desc
 
-  def lista(self):
-    self.listanome = []
-    self.listapreco = []
-    self.listadesc = []
+  def mostrar(self):
+    self.mostrarCate()
+    print("Nome:", self.nome, "\nPreço:", self.preco, "\nDescrição:", self.descricao)
+    
 
-    if self.nome == True:
-      self.listanome = self.listanome.append(self.nome)
+#"Categoria:", self.nomeP, 
+
 
