@@ -8,10 +8,5 @@ class Produto(Categoria):
     self.descricao = desc
 
   def mostrar(self):
-    self.mostrarCate()
-    print("Nome:", self.nome, "\nPreço:", self.preco, "\nDescrição:", self.descricao)
+    print("Categoria:", self.nomeP, "\nNome:", self.nome, "\nPreço:", self.preco, "\nDescrição:", self.descricao)
     
-
-#"Categoria:", self.nomeP, 
-
-
