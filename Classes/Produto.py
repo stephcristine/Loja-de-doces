@@ -8,5 +8,10 @@ class Produto(Categoria):
     self.descricao = desc
 
   def mostrar(self):
-    print("Categoria:", self.nomeP, "\nNome:", self.nome, "\nPreço:", self.preco, "\nDescrição:", self.descricao)
+    print("="*10, "PRODUTO","="*10)
+    print("| CATEGORIA: ", self.nomeP)
+    print("| NOME PRODUTO: ", self.nome)
+    print("| PREÇO: ", self.preco)
+    print("| DESCRIÇÃO: ", self.descricao)
+    print("="*30)
     

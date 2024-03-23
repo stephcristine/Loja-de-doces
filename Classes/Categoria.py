@@ -3,4 +3,6 @@ class Categoria():
     self.nomeP = nomeP
 
   def mostrarCate(self):
-    print("Categoria:", self.nomeP)
+    print("="*10, "CATEGORIA","="*10)
+    print("| NOME: ", self.nomeP)
+    print("="*30)

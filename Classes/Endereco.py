@@ -1,4 +1,4 @@
-class Endereco:
+class Endereco():
     def __init__(self, cep, bairro, rua, num_casa):
         self.cep = cep  
         self.bairro = bairro

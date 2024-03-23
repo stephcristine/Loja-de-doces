@@ -14,20 +14,3 @@ class Usuario(Endereco):
         self.data_nasc = data_nasc
         self.email = email
         self.senha = senha
-
-
-class Compra(Usuario):
-    def __init__(self, total, nomeU):
-        super().__init__(nomeU)
-        self.total = total
-
-
-class Carrinho():
-    def __init__(self, item):
-        self.item = item
-
-
-class Item_carrinho(Carrinho):
-    def __init__(self, qtd, itens):
-        super().__init__(itens)
-        self.qtd_item = qtd
