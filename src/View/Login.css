@@ -1,0 +1,47 @@
+.container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: #FBF2ED;
+}
+
+.formulario{
+  background-color: #57B7f2;
+  border-radius: 5%;
+  width: 25%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10%;
+}
+
+.divEmail input{
+  background: #ffffff;
+  border: 0;
+  height: 150%;
+}
+.divEmail input::placeholder{
+  color: black;
+}
+
+.divSenha input{
+  background: #ffffff;
+  border: 0;
+  height: 150%;
+}
+
+.divSenha input::placeholder{
+  color: black;
+}
+
+.entrar{
+  border: 0;
+  border-radius: 10px;
+  padding: 15px;
+  color:  black;
+  background-color: #F24194;
+}
