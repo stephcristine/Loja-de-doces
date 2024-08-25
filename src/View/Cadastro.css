@@ -1,0 +1,15 @@
+.container{
+  background-color: #FBF2ED;
+  width: 100%;
+  height: 100vh;
+}
+
+.formulario{
+  background-color: #A9C9D4;
+  width: fit-content;
+  padding: 10%;
+}
+
+.nome{
+  background-color: black;
+}
