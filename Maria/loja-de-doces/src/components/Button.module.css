@@ -1,0 +1,30 @@
+.button {
+    background-color: #e8e11a;
+    border: none; 
+    color: #ffffff; 
+    padding: 15px 26px; 
+    text-align: center; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 4px; 
+    font-weight: bold;
+}
+
+.containerDoceBombom{
+    background-color: #f8e4fc;
+    text-align: center; 
+    padding: 20px;
+}
+
+.containerModal{
+    background-color: #dabae1;
+    text-align: center; 
+    padding: 20px;
+}
+
+.containerHeader{
+    background-color: #9418a8;
+    text-align: center; 
+    padding: 20px;
+}

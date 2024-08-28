@@ -1,0 +1,16 @@
+.imgContainer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px; 
+}
+
+.img {
+    max-width: 30%; 
+    height: auto;
+}
+
+.center {
+    margin: 0 auto;
+}
+
