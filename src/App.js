@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 import NotFound from './NotFound';
 import Formulario from './Formulario'
 import PaginaUsuario from './PaginaUsuario';
+import Venda from './Venda'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Cadastro" element={<Formulario />} />
         <Route path="/PaginaUsuario" element={<PaginaUsuario />} />
+        <Route path="/Venda" element={<Venda />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />

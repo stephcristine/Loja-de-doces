@@ -1,0 +1,54 @@
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    background-color: #9418a8;
+    padding: 10px;
+    font-family: "Angeline Vintage"
+}
+
+.h1 {
+    color: #fbf2ed;
+    margin: 0; 
+    font-size: 50px; 
+}
+
+.titleContainer {
+    flex: 1; 
+    text-align: center; 
+}
+
+.logo {
+    width: 100px; 
+    height: auto;
+}
+
+
+.baseboard{
+    background-color: #b614cf;
+    padding: 30px;
+}
+
+.padding{
+    padding: 80px;
+    background-color: #fbf2ed;
+}
+
+.title{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 30px;
+    background-color: #b614cf;
+    font-family: "Angeline Vintage"
+}
+
+
+
+
+
+
+
+
+

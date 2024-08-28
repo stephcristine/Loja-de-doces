@@ -19,6 +19,9 @@ export default function HomePage() {
           </p>
         </div>
         <Link to="/Cadastro" className="content-button">Venda</Link>
+
+
+        <Link to= "/Venda"  className="content-button"> !!!VENDA!!!</Link>
       </div>
     </div>
   );
