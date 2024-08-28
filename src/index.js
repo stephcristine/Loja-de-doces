@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './View/index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import Cadastro from './Cadastro';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    
-    <Cadastro />
-  </React.StrictMode>
-);
 
-// <App />
+console.log('Rendering the application within BrowserRouter');
+
+root.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);

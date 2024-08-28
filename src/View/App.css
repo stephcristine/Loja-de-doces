@@ -1,28 +1,162 @@
-/*Paleta de cores
+/* Importa a fonte Montserrat do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-#A9C9D4
-#E8C4C6 - bege/rosa
-#FBF2ED - bege
-#F244C4 - pink
-*/
-
-.container{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background: #FBF2ED;
+/* Define a fonte padrão para todo o projeto */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.formulario{
-  background-color: #E8C4C6;
-  border-radius: 5%;
-  width: 25%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Estilo da barra de navegação */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 120px;
+    background-color: #F244C4;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
+/* Estilo do logo */
+.navbar-logo {
+    height: 80px;
+}
+
+/* Contêiner dos botões */
+.navbar-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Estilo dos botões */
+/* Remove sublinhado dos links */
+.navbar-button,
+.content-button {
+    text-decoration: none;
+}
+
+.navbar-button {
+    background: #F6729C;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-button:hover {
+    background-color: #e55c8d;
+}
+
+/* Para botões dentro da navbar e conteúdo */
+.content-button {
+    background: #F6729C;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content-button:hover {
+    background-color: #e55c8d;
+}
+
+/* Contêiner do conteúdo abaixo da barra de navegação */
+.content {
+    display: flex;
+    align-items: center;
+    margin-top: 145px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: calc(100vh - 120px - 40px);
+    overflow: hidden;
+}
+
+/* Contêiner de texto e botão */
+.text-and-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-left: 20px;
+}
+
+/* Estilo da imagem */
+.content-photo {
+    width: 35%;
+    height: auto;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/* Contêiner de texto */
+.content-text {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo do título */
+.content-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 100%;
+}
+
+/* Estilo do subtítulo */
+.content-subtitle {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 100%;
+}
+
+/* Estilo do botão abaixo do texto */
+.content-button {
+    background: #F6729C;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content-button:hover {
+    background-color: #e55c8d;
+}
