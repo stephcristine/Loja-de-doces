@@ -4,10 +4,10 @@ import styles from '../View/Counter.module.css';
 function Counter({ onCountChange }) {
   const [count, setCount] = useState(0);
 
-  const increment = () => setCount(count + 1);
+  const increment = () => setCount(prevCount => prevCount + 1);
   const decrement = () => {
     if (count > 0) {
-      setCount(count - 1);
+      setCount(prevCount => prevCount - 1);
     }
   };
 

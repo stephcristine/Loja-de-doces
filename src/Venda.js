@@ -1,6 +1,7 @@
 // REACT
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./View/PaginaDoces.module.css"
+import axios from 'axios';
 
 // COMPONENTES
 import Navbar from './Navbar';
@@ -17,7 +18,18 @@ import bombom_brigadeiro from './imagens/bombom_brigadeiro.png';
 import bombom_morango from './imagens/bombom_morango.png';
 import bombom_coco from './imagens/bombom_coco.png';
 
-function Venda() {
+export default function Venda() {
+  const [produtos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/produto')
+      .then(response => {
+        setProdutos(response.data);
+      })
+      .catch(error => {
+        console.error('Houve um erro ao buscar os dados:', error);
+      });
+  }, []);
 
   // CONFIGURAÇÕES DOS MODAIS
   const [isModalDoceOpen, setIsModalDoceOpen] = useState(false);
@@ -28,6 +40,14 @@ function Venda() {
 
   const openModalBombom = () => setIsModalBombomOpen(true);
   const closeModalBombom = () => setIsModalBombomOpen(false);
+
+  const doce1 = produtos.find(produto => produto.id_produto === 10);
+  const doce2 = produtos.find(produto => produto.id_produto === 11);
+  const doce3 = produtos.find(produto => produto.id_produto === 12);
+
+  const bombom1 = produtos.find(produto => produto.id_produto === 1);
+  const bombom2 = produtos.find(produto => produto.id_produto === 4);
+  const bombom3 = produtos.find(produto => produto.id_produto === 7);
 
   return (
     <div>
@@ -42,9 +62,9 @@ function Venda() {
         doce1={brigadeiro} 
         doce2={bicho_de_pe} 
         doce3={casadinho} 
-        name1="Brigadeiro" 
-        name2="Bicho de Pé" 
-        name3="Casadinho"
+        name1={doce1 ? doce1.nome_produto : ""} 
+        name2={doce2 ? doce2.nome_produto : ""} 
+        name3={doce3 ? doce3.nome_produto : ""}
       />
       <ButtonDoceBombom onClick={openModalDoce} />
 
@@ -52,21 +72,20 @@ function Venda() {
        <ModalDoce
         isOpen={isModalDoceOpen} 
         onClose={closeModalDoce}
-        title = "Doces"
+        title="Doces"
         doce1={brigadeiro} 
         doce2={bicho_de_pe} 
         doce3={casadinho} 
-        name1="Brigadeiro" 
-        name2="Bicho de Pé" 
-        name3="Casadinho"
-        descricao1 = "Deliciosa combinação de leite condensado e chocolate, coberto com granulados crocantes."
-        descricao2 = "Um doce rosado, feito de morango, perfeito para os apaixonados por sabores delicados."
-        descricao3 = "Um encontro irresistível entre o beijinho e o brigadeiro, formando uma dupla perfeita."
-        valor1 = {3}
-        valor2 = {3}
-        valor3 = {3}
+        name1={doce1 ? doce1.nome_produto : ""}
+        name2={doce2 ? doce2.nome_produto : ""}
+        name3={doce3 ? doce3.nome_produto : ""}
+        descricao1={doce1 ? doce1.desc_produto : ""}
+        descricao2={doce2 ? doce2.desc_produto : ""}
+        descricao3={doce3 ? doce3.desc_produto : ""}
+        valor1={doce1 ? doce1.preco_produto : ""}
+        valor2={doce2 ? doce2.preco_produto : ""}
+        valor3={doce3 ? doce3.preco_produto : ""}
       />
-
 
       {/* BOMBONS */}
       <Title name="Bombom" />
@@ -74,9 +93,9 @@ function Venda() {
         doce1 = {bombom_brigadeiro} 
         doce2 = {bombom_morango} 
         doce3 = {bombom_coco} 
-        name1 = "Bombom de Brigadeiro" 
-        name2 = "Bombom de Morango" 
-        name3 = "Bombom de Coco"
+        name1={bombom1 ? bombom1.nome_produto : ""} 
+        name2={bombom2 ? bombom2.nome_produto : ""} 
+        name3={bombom3 ? bombom3.nome_produto : ""}
       />
       <ButtonDoceBombom onClick={openModalBombom} />
 
@@ -88,24 +107,20 @@ function Venda() {
         doce1 = {bombom_brigadeiro} 
         doce2 = {bombom_morango} 
         doce3 = {bombom_coco} 
-        name1 = "Bombom de Brigadeiro" 
-        name2 = "Bombom de Morango" 
-        name3 = "Bombom de           Coco"
-        descricao1 = "Bombom recheado com um irresistível creme de chocolate, coberto com uma camada crocante."
-        descricao2 = "Bombom recheado com morango suculento e envolto em uma camada de chocolate fino."
-        descricao3 = "Bombom recheado com coco ralado e coberto por uma deliciosa camada de chocolate."
-        valor1 = {7}
-        valor2 = {7}
-        valor3 = {7}
+        name1={bombom1 ? bombom1.nome_produto : ""}
+        name2={bombom2 ? bombom2.nome_produto : ""}
+        name3={bombom3 ? bombom3.nome_produto : ""}
+        descricao1={bombom1 ? bombom1.desc_produto : ""}
+        descricao2={bombom2 ? bombom2.desc_produto : ""}
+        descricao3={bombom3 ? bombom3.desc_produto : ""}
+        valor1={bombom1 ? bombom1.preco_produto : ""}
+        valor2={bombom2 ? bombom2.preco_produto : ""}
+        valor3={bombom3 ? bombom3.preco_produto : ""}
       />
-
 
       {/* ESTRUTURA DA PÁGINA */}
       <div className = {styles.baseboard}></div>
       
-
     </div>
   );
 }
-
-export default Venda;
