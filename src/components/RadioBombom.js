@@ -12,15 +12,15 @@ function RadioBombom({ onChange }) {
             
             <div className={styles.radioGroup}>
                 <label className={styles.radioLabel}>
-                    <input type="radio" name="bombom" value="Chocolate Branco" onChange={handleChange} />
+                    <input type="radio" name="bombom" value="branco" onChange={handleChange} />
                     Chocolate Branco
                 </label>
                 <label className={styles.radioLabel}>
-                    <input type="radio" name="bombom" value="Chocolate ao Leite" onChange={handleChange} />
+                    <input type="radio" name="bombom" value="ao Leite" onChange={handleChange} />
                     Chocolate ao Leite
                 </label>
                 <label className={styles.radioLabel}>
-                    <input type="radio" name="bombom" value="Chocolate Meio Amargo" onChange={handleChange} />
+                    <input type="radio" name="bombom" value="meio-amargo" onChange={handleChange} />
                     Chocolate Meio Amargo
                 </label>
             </div>

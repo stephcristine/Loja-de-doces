@@ -1,37 +1,19 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-// Function to handle adding a purchase
-const handleCompra = async (itemName, chocolateFlavor, quantity) => {
+export default async function handleCompra (values) {
     try {
-        // Get the product ID based on itemName and chocolateFlavor (if applicable)
-        const response = await axios.get('http://localhost:5000/getProdutoId', {
-            params: {
-                nome: itemName,
-                chocolate: chocolateFlavor
-            }
+        console.log("Enviando dados:", values);
+        await axios.post("http://localhost:3001/compra", {
+            qtd_produto: values.qtd_produto,
+            status_compra: values.status_compra,
+            id_produto: values.id_produto,
+            id_categoria_produto: values.id_categoria_produto,
+            id_usuario: values.id_usuario,
         });
-
-        const produtoId = response.data.id;
-
-        console.log('Produto ID:', produtoId); // Log the produtoId
-        console.log('Quantity:', quantity); // Log the quantity
-
-        // Check if produtoId is valid
-        if (!produtoId || quantity === undefined || quantity === null) {
-            throw new Error('Dados inválidos: produtoId ou quantidade ausentes.');
-        }
-
-        // Add the purchase
-        await axios.post('http://localhost:5000/addCompra', {
-            produtoId,
-            quantidade: quantity
-        });
-
-        alert('Compra adicionada com sucesso!');
+        toast.success("Produto adicionado ao carrinho com sucesso!");
     } catch (error) {
-        console.error('Erro ao adicionar compra:', error);
-        alert('Erro ao adicionar compra.');
+        console.log("Erro ao adicionar ao carrinho:", error);
+        toast.error("Erro ao adicionar ao carrinho.");
     }
 };
-
-export default handleCompra;
