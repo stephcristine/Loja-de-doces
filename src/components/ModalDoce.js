@@ -33,8 +33,8 @@ function ModalDoce({ isOpen, onClose, title, doce1, doce2, doce3, name1, name2, 
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
-                <button className={styles.closeButton} onClick={onClose}>
-                    &times;
+                <button className={styles.closeButton} onClick={onClose}> x
+                    
                 </button>
 
                 {/* CABEÇALHO COM TÍTULOS */}

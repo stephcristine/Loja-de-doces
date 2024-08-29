@@ -23,8 +23,11 @@ body {
 
 /* Contêiner dos botões */
 .navbar-buttons {
-    display: flex;
+  display: flex;
+  align-items: center; /* Garante que os botões estejam alinhados verticalmente */
+  height: 100%; /* Garante que os botões ocupem toda a altura do navbar */
 }
+
 
 /* Estilo dos botões */
 .navbar-button {
@@ -52,3 +55,5 @@ body {
     color: white;
     /* Cor do texto ao passar o mouse */
 }
+
+
