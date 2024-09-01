@@ -1,27 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import styles from '../View/Counter.module.css';
 
-function Counter({ onCountChange }) {
-  const [count, setCount] = useState(0);
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
 
-  const increment = () => setCount(prevCount => prevCount + 1);
-  const decrement = () => {
-    if (count > 0) {
-      setCount(prevCount => prevCount - 1);
+  increment = () => {
+    this.setState(prevState => ({ count: prevState.count + 1 }));
+  }
+
+  decrement = () => {
+    this.setState(prevState => {
+      if (prevState.count > 0) {
+        return { count: prevState.count - 1 };
+      }
+      return null;
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      this.props.onCountChange(this.state.count);
     }
-  };
+  }
 
-  useEffect(() => {
-    onCountChange(count);
-  }, [count, onCountChange]);
-
-  return (
-    <div className={styles.counterContainer}>
-      <button className={styles.counterButton} onClick={decrement}>-</button>
-      <span className={styles.counterDisplay}>{count}</span>
-      <button className={styles.counterButton} onClick={increment}>+</button>
-    </div>
-  );
+  render() {
+    return (
+      <div className={styles.counterContainer}>
+        <button className={styles.counterButton} onClick={this.decrement}>-</button>
+        <span className={styles.counterDisplay}>{this.state.count}</span>
+        <button className={styles.counterButton} onClick={this.increment}>+</button>
+      </div>
+    );
+  }
 }
 
 export default Counter;

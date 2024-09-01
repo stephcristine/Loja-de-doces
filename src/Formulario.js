@@ -1,24 +1,24 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './View/Formulario.css';
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import UsuarioService from './services/UsuarioService';
 
 export default function Formulario() {
 
   const [values, setValues] = useState({});
   const navigate = useNavigate();
 
-  const handleChanges = (value) => {
-
-    setValues((preValue) => ({
-      ...preValue, [value.target.name] : value.target.value,
+  const handleChanges = (event) => {
+    const { name, value } = event.target;
+    setValues(prevValues => ({
+      ...prevValues,
+      [name]: value,
     }));
-
   };
 
-  const handleSubmit = (event) => {
-
+  const handleSubmit = async (event) => {
+    console.log("Formulário enviado");
     event.preventDefault();
 
     if (values.senha !== values.senha2) {
@@ -35,19 +35,23 @@ export default function Formulario() {
     ){
       return toast.warn("Preencha todos os campos!");
     }
+
     try {
-      axios.post("http://localhost:3001/usuario", {
+      console.log('Tentando cadastrar usuário...', values);
+      await UsuarioService.cadastrarUsuario({
         nome: values.nome,
         sobrenome: values.sobrenome,
         email: values.email,
         data_nasc: values.data_nasc,
         cep: values.cep,
         senha: values.senha,
-    });
+      });
+    console.log('Usuário cadastrado com sucesso');
     toast.success("Usuário cadastrado com sucesso!");
+
     setTimeout(() => {
       navigate('/');
-    }, 1000);
+    }, 2000); 
     } catch (error) {
       console.log("Erro ao cadastrar usuário:", error);
       toast.error("Erro ao cadastrar usuário.");

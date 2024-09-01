@@ -1,15 +1,16 @@
-// ButtonDoceBombom.js
+import React, { Component } from 'react';
 import styles from '../View/Button.module.css';
 
-function ButtonDoceBombom({ onClick }) {
-
+class ButtonDoceBombom extends Component {
+  render() {
     return (
-        <div className={styles.containerDoceBombom}>
-            <button className={styles.button} onClick={onClick}>
-                Adicionar ao carrinho
-            </button>
-        </div>
+      <div className={styles.containerDoceBombom}>
+        <button className={styles.button} onClick={this.props.onClick}>
+          Adicionar ao carrinho
+        </button>
+      </div>
     );
+  }
 }
 
 export default ButtonDoceBombom;

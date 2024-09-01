@@ -1,7 +1,8 @@
 // REACT
 import React, { useState, useEffect } from 'react';
 import styles from "./View/PaginaDoces.module.css"
-import axios from 'axios';
+import ProdutoService from './services/ProdutoService';
+import CategoriaService from './services/CategoriaService';
 
 // COMPONENTES
 import Navbar from './Navbar';
@@ -18,17 +19,30 @@ import bombom_brigadeiro from './imagens/bombom_brigadeiro.png';
 import bombom_morango from './imagens/bombom_morango.png';
 import bombom_coco from './imagens/bombom_coco.png';
 
+
 export default function Venda() {
   const [produtos, setProdutos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [idUsuario, setIdUsuario] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/produto')
-      .then(response => {
-        setProdutos(response.data);
-      })
-      .catch(error => {
+    const fetchData = async () => {
+      try {
+        const produtosData = await ProdutoService.buscarProdutos();
+        setProdutos(produtosData);
+
+        const categoriasData = await CategoriaService.buscarCategorias();
+        console.log('Categorias recebidas:', categoriasData); 
+        setCategorias(categoriasData);
+
+        const userId = localStorage.getItem('id_usuario');
+        setIdUsuario(userId);
+      } catch (error) {
         console.error('Houve um erro ao buscar os dados:', error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   // CONFIGURAÇÕES DOS MODAIS
@@ -49,6 +63,9 @@ export default function Venda() {
   const bombom2 = produtos.find(produto => produto.id_produto === 4);
   const bombom3 = produtos.find(produto => produto.id_produto === 7);
 
+  const doceCategoria = categorias.find(cat => cat.nome_categoria === 'doce');
+  const bombomCategoria = categorias.find(cat => cat.nome_categoria === 'bombom');
+
   return (
     <div>
 
@@ -57,7 +74,11 @@ export default function Venda() {
       <div className={styles.padding}></div>
 
       {/* DOCES */}
-      <Title name="Doces" />
+      {doceCategoria ? (
+        <Title name={doceCategoria.nome_categoria} />
+      ) : (
+        <p>Categoria "Doce" não encontrada.</p>
+      )}
       <DoceBombomImg 
         doce1={brigadeiro} 
         doce2={bicho_de_pe} 
@@ -72,7 +93,7 @@ export default function Venda() {
        <ModalDoce
         isOpen={isModalDoceOpen} 
         onClose={closeModalDoce}
-        title="Doces"
+        title={doceCategoria?.nome_categoria || "Título não disponível"}
         doce1={brigadeiro} 
         doce2={bicho_de_pe} 
         doce3={casadinho} 
@@ -85,10 +106,16 @@ export default function Venda() {
         valor1={doce1 ? doce1.preco_produto : ""}
         valor2={doce2 ? doce2.preco_produto : ""}
         valor3={doce3 ? doce3.preco_produto : ""}
+        idCategoriaProduto={doceCategoria?.id_categoria_produto}
+        idUsuario={idUsuario}
       />
 
       {/* BOMBONS */}
-      <Title name="Bombom" />
+      {bombomCategoria ? (
+        <Title name={bombomCategoria.nome_categoria} />
+      ) : (
+        <p>Categoria "Bombom" não encontrada.</p>
+      )}
       <DoceBombomImg 
         doce1 = {bombom_brigadeiro} 
         doce2 = {bombom_morango} 
@@ -103,7 +130,7 @@ export default function Venda() {
       <ModalDoce
         isOpen = {isModalBombomOpen} 
         onClose = {closeModalBombom}
-        title = "Bombons"
+        title = {bombomCategoria?.nome_categoria || "Título não disponível"}
         doce1 = {bombom_brigadeiro} 
         doce2 = {bombom_morango} 
         doce3 = {bombom_coco} 
@@ -116,6 +143,8 @@ export default function Venda() {
         valor1={bombom1 ? bombom1.preco_produto : ""}
         valor2={bombom2 ? bombom2.preco_produto : ""}
         valor3={bombom3 ? bombom3.preco_produto : ""}
+        idCategoriaProduto={bombomCategoria?.id_categoria_produto}
+        idUsuario={idUsuario}
       />
 
       {/* ESTRUTURA DA PÁGINA */}

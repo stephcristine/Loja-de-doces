@@ -10,10 +10,12 @@ import NotFound from './NotFound';
 import Formulario from './Formulario'
 import PaginaUsuario from './PaginaUsuario';
 import Venda from './Venda'
+import EditarUsuario from './EditarUsuario';
 
 export default function App() {
   return (
     <div className="app">
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -21,9 +23,10 @@ export default function App() {
         <Route path="/Cadastro" element={<Formulario />} />
         <Route path="/PaginaUsuario" element={<PaginaUsuario />} />
         <Route path="/Venda" element={<Venda />} />
+        <Route path="/EditarUsuario" element={<EditarUsuario />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <ToastContainer />
+      
     </div>
   );
 }

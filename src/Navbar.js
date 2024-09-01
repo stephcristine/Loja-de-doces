@@ -1,7 +1,7 @@
 import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import logo from './imagens/logo.png';
-import { Link, useLocation } from 'react-router-dom';
-import DropDownUsuario from './components/DropDownUsuario'; // Ajuste o caminho conforme necessário
+import DropDownUsuario from './components/DropDownUsuario';
 
 export default function Navbar() {
   const location = useLocation();
@@ -21,7 +21,6 @@ export default function Navbar() {
             <Link to="/PaginaUsuario" className="navbar-button">Usuário</Link>
           </>
         )}
-        
       </div>
     </nav>
   );
